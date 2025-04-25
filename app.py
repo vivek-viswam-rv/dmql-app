@@ -8,11 +8,10 @@ st.set_page_config(page_title="Query Results Viewer", layout="wide")
 st.markdown("<h1 style='text-align: center;'>AWS RDS Query Viewer</h1>", unsafe_allow_html=True)
 
 username = "postgres"
-password = "LWCEJCwTqXQB3tECa7EH"
-db_type = "postgresql"
+password = "password"
 host = "database-1.cohgsoe8efzr.us-east-1.rds.amazonaws.com"
 port = "5432"
-database = "database-1"
+database = "Retail"
 
 st.subheader("Enter Your SQL Query")
 query = st.text_area("SQL Query", height=180)

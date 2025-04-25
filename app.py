@@ -7,25 +7,19 @@ st.set_page_config(page_title="Query Results Viewer", layout="wide")
 
 st.markdown("<h1 style='text-align: center;'>AWS RDS Query Viewer</h1>", unsafe_allow_html=True)
 
-username = ""
-password = ""
-
-with st.sidebar:
-    st.header("Database Connection")
-    db_type = st.selectbox("Database Type", ["postgresql", "mysql"])
-    host = st.text_input("Host", "your-db-endpoint.rds.amazonaws.com")
-    port = st.text_input("Port", "5432" if db_type == "postgresql" else "3306")
-    database = st.text_input("Database Name")
+username = "postgres"
+password = "LWCEJCwTqXQB3tECa7EH"
+db_type = "postgresql"
+host = "database-1.cohgsoe8efzr.us-east-1.rds.amazonaws.com"
+port = "5432"
+database = "database-1"
 
 st.subheader("Enter Your SQL Query")
 query = st.text_area("SQL Query", height=180)
 
 if st.button("Run Query"):
     try:
-        if db_type == "postgresql":
-            url = f"postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}"
-        else:
-            url = f"mysql+pymysql://{username}:{password}@{host}:{port}/{database}"
+        url = f"postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}"
 
         engine = create_engine(url)
         with engine.connect() as conn:
